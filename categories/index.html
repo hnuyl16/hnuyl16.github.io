@@ -45,8 +45,6 @@
 
 
     
-        <link rel="stylesheet" type="text/css" href="/css/reward.css">
-    
 
 
 
@@ -399,29 +397,29 @@
                 
                 
                 
-                <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" title="数据结构与算法: 2">
+                <a href="/categories/C/" title="C++: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">数据结构与算法
+                            style="background-color: #F9EBEA;">C++
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="java学习笔记: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F5EEF8;">java学习笔记
                         <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/java%E7%AC%94%E8%AE%B0/" title="java笔记: 0">
+                <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" title="数据结构与算法: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">java笔记
-                        <span class="tag-length">0</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="java学习笔记: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D5F5E3;">java学习笔记
-                        <span class="tag-length">1</span>
+                            style="background-color: #D5F5E3;">数据结构与算法
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -468,7 +466,7 @@
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"数据结构与算法","max":2},{"name":"java笔记","max":2},{"name":"java学习笔记","max":2}],
+            indicator: [{"name":"C++","max":4},{"name":"java学习笔记","max":4},{"name":"数据结构与算法","max":4}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -479,7 +477,7 @@
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
             data : [
                 {
-                    value : [2,0,1],
+                    value : [1,2,3],
                     name : '文章分类数量'
                 }
             ]
@@ -565,7 +563,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">35k</span>
+                        class="white-color">54k</span>
             
             
             
@@ -778,6 +776,14 @@ $(function () {
     
 
     <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+            }
+        </script>
     
 
     <!-- 鼠标星星特效 -->
