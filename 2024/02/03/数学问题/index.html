@@ -362,9 +362,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/">
+                                <span class="chip bg-color">数学问题</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -399,14 +403,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.1k
+                    4.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    25 分
+                    23 分
                 </div>
                 
 
@@ -511,34 +515,15 @@
 
 <h2 id="八、进制转换"><a href="#八、进制转换" class="headerlink" title="八、进制转换"></a>八、进制转换</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="comment">//进制转化</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">map&lt;<span class="type">char</span>,<span class="type">int</span>&gt;mp1;</span><br><span class="line">map&lt;<span class="type">int</span>,<span class="type">char</span>&gt;mp2;</span><br><span class="line"><span class="type">int</span> num,temp;</span><br><span class="line"><span class="type">char</span> ans[<span class="number">1000</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		mp1[i+<span class="string">&#x27;0&#x27;</span>]=i;</span><br><span class="line">		mp2[i]=i+<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">char</span> i=<span class="string">&#x27;A&#x27;</span>;i&lt;=<span class="string">&#x27;F&#x27;</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		mp1[i]=i-<span class="string">&#x27;A&#x27;</span>+<span class="number">10</span>;</span><br><span class="line">		mp2[i-<span class="string">&#x27;A&#x27;</span>+<span class="number">10</span>]=i;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> d;<span class="comment">//初始进制</span></span><br><span class="line">	cin&gt;&gt;d;</span><br><span class="line">	string str;<span class="comment">//读入数据</span></span><br><span class="line">	cin&gt;&gt;str;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;str.<span class="built_in">size</span>();i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//转化为10进制</span></span><br><span class="line">		temp=temp*d+mp1[str[i]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> a;<span class="comment">//转化后的进制</span></span><br><span class="line">	cin&gt;&gt;a;</span><br><span class="line">	<span class="keyword">while</span>(temp)</span><br><span class="line">	&#123;</span><br><span class="line">		ans[num++]=mp2[temp%a];</span><br><span class="line">		temp/=a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=num<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;ans[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="九、组合数求解"><a href="#九、组合数求解" class="headerlink" title="九、组合数求解"></a>九、组合数求解</h2><p>先上公式：<br>$$<br>C_n^m&#x3D;1(m&#x3D;0或m&#x3D;n)\<br>c_n^m&#x3D;c_{n-1}^m+c_{n-1}^{m-1}(n&gt;m&gt;0)<br>$$</p>
+<h2 id="九、组合数求解"><a href="#九、组合数求解" class="headerlink" title="九、组合数求解"></a>九、组合数求解</h2><p>公式：<br>$$<br>C_n^m&#x3D;1(m&#x3D;0或m&#x3D;n)\<br>c_n^m&#x3D;c_{n-1}^m+c_{n-1}^{m-1}(n&gt;m&gt;0)<br>$$</p>
 <p>所以，我们可以使用动态规划来求解组合数，直接上代码。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    dp[i][i] = dp[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt; i; ++j) &#123;</span><br><span class="line">        dp[i][j] = dp[i - <span class="number">1</span>][j] + dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>观察到每一行的组合数都只需要用到上一行组合数的数值，所以可以进行<strong>状态压缩</strong>，注意倒序处理。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = i; j &gt;= <span class="number">0</span>; --j) &#123;    <span class="comment">//倒序处理</span></span><br><span class="line">        <span class="keyword">if</span> (j == i || j == <span class="number">0</span>) dp[j] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> dp[j] = dp[j] + dp[j - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="十、蔡勒公式"><a href="#十、蔡勒公式" class="headerlink" title="十、蔡勒公式"></a>十、蔡勒公式</h2><p>用于知道年月日求对应是周几</p>
-<h3 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h3><p>$$<br>D&#x3D;[\frac{c}{4}]−2c+y+[\frac{y}{4}]+[\frac{3(m+1)}{4}]+d−1\</p>
-<p>W&#x3D;D mod 7<br>$$</p>
-<p>其中：</p>
-<ul>
-<li>W是星期数</li>
-<li>D是辅助计算数（意为当前日期到原点日期一共经过多少天）</li>
-<li>c是年份前两位</li>
-<li>y是年份后两位</li>
-<li>m是月份。m的取值范围是3至14，某年的1、2月看作是上一年的13、14月</li>
-<li>d是日数</li>
-<li>[]是取整运算（向下取整）</li>
-<li>mod 是求余运算</li>
-</ul>
-<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>证明见<a target="_blank" rel="noopener" href="https://www.cnblogs.com/faterazer/p/11393521.html">faterazer博客</a></p>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>计算 1994 年 12 月 13 日是星期几。显然 c &#x3D; 19，y &#x3D; 94，m &#x3D; 12，d &#x3D; 13，代入公式：<br>$$<br>D&#x3D;[\frac{19}{4}]−2*19+94+[\frac{94}{4}]+[\frac{3(12+1)}{4}]+13−1\</p>
-<p>W&#x3D;128 mod 7<br>$$</p>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ol>
-<li>在计算机编程中，W 的计算结果有可能是负数。我们需要注意，数学中的求余运算和编程中的求余运算不是完全相同的，数学上余数不能是负数，而编程中余数可以是负数。因此，在计算机中 W 是负数时，我们需要进行修正。修正方法十分简单：让 W 加上一个足够大的 7 的整数倍，使其成为正数，得到的结果再对 7 取余即可。比如 -15，我可以让其加上 70，得到 55，再除以 7 余 6，通过余数可知这一天是星期六。</li>
-<li>此公式只适用于格里高利历（也就是现在的公历）。</li>
-</ol>
+
+
 
                 
             </div>
@@ -602,7 +587,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/">
+                                    <span class="chip bg-color">数学问题</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -764,6 +753,14 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">数学问题</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -965,7 +962,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">11.1k</span>
+                        class="white-color">35k</span>
             
             
             
