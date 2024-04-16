@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Javaweb, 余年的个人博客">
-    <meta name="description" content="">
+    <meta name="description" content="JavaWeb前端vuevue是一套前端框架，免除原生JavaScript中的DOM操作，简化书写。
+基于MVVM(Model-View-ViewModel)思想，实现数据的双向绑定，将编程的关注点放在数据上
+框架：是一个半成品软件，是一套">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -380,21 +382,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-03-12
+                    2024-03-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    12.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    54 分
                 </div>
                 
 
@@ -417,7 +419,1183 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="JavaWeb"><a href="#JavaWeb" class="headerlink" title="JavaWeb"></a>JavaWeb</h1><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h3><p><strong>vue</strong>是一套前端框架，免除原生JavaScript中的DOM操作，简化书写。</p>
+<p>基于MVVM(Model-View-ViewModel)思想，实现数据的<mark>双向绑定</mark>，将编程的关注点放在数据上</p>
+<p>框架：是一个半成品软件，是一套课重用的、通用的、软件基础代码模型，基于框架进行开发，更加快捷、更加高效。</p>
+<ul>
+<li>Model: 数据模型，特指前端中通过请求从后台获取的数据 </li>
+<li>View: 视图，用于展示数据的页面，可以理解成我们的html+css搭建的页面，但是没有数据</li>
+<li>ViewModel: 数据绑定到视图，负责将数据（Model）通过JavaScript的DOM技术，将数据展 示到视图（View）上</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/">官网</a></p>
+<p>Vue快速入门</p>
+<ul>
+<li>新建HTML页面，引入Vue.js文件</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js/vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> //vue2框架</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在JS代码区域，创建Vue核心对象，定义数据模型</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">el</span>: <span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">data</span>:&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">message</span>: <span class="string">&quot;Hello Vue!&quot;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编写视图</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;message&quot;</span>&gt;</span></span><br><span class="line">    &#123;&#123; message &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>插值表达式</strong></p>
+<p>形式：</p>
+<p>内容：可以是<code>变量</code>、<code>三元运算符</code>、<code>函数调用</code>、<code>算术运算</code></p>
+<h4 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h4><p>指令：HTML标签上带有 v- 前缀的特殊属性，不同指令具有不同的含义。</p>
+<p>常用指令如下：</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>v-bind</td>
+<td>为HTML标签绑定属性，如设置href，css样式等</td>
+</tr>
+<tr>
+<td>v-model</td>
+<td>在表单元素上创建双向数据绑定</td>
+</tr>
+<tr>
+<td>v-on</td>
+<td>为HTML标签绑定事件</td>
+</tr>
+<tr>
+<td>v-if</td>
+<td>条件性的渲染某元素，判定为true时渲染，否则不渲染</td>
+</tr>
+<tr>
+<td>v-else-if</td>
+<td>条件性的渲染某元素，判定为true时渲染，否则不渲染</td>
+</tr>
+<tr>
+<td>v-else</td>
+<td>条件性的渲染某元素，判定为true时渲染，否则不渲染</td>
+</tr>
+<tr>
+<td>v-show</td>
+<td>根据条件展示某元素，区别在于切换的是display属性的值</td>
+</tr>
+<tr>
+<td>v-for</td>
+<td>列表渲染，遍历容器的元素或者对象的属性</td>
+</tr>
+</tbody></table>
+<ul>
+<li>v-bind</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">&quot;url&quot;</span>&gt;</span>传智教育<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">&quot;url&quot;</span>&gt;</span>传智教育<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>v-model</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;url&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><mark>注意：通过v-bind或者v-model绑定的变量，必须在数据模型中声明</mark></p>
+<ul>
+<li>v-on</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;按钮&quot;</span> <span class="attr">v-on:click</span>=<span class="string">&quot;handle()&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;按钮&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;handle()&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	new Vue(&#123;</span><br><span class="line">        el: &quot;#app&quot;;</span><br><span class="line">        data&#123;</span><br><span class="line">        	...</span><br><span class="line">    &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            handle:function()&#123;</span><br><span class="line">        		alert(&#x27;我被点击了&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>v-if</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">年龄&#123;&#123;age&#125;&#125;,经判定为：</span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-if</span>=<span class="string">&quot;age &lt;= 35&quot;</span>&gt;</span>年轻人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-else-if</span>=<span class="string">&quot;age &gt;35 &amp;&amp; age &lt; 60&quot;</span>&gt;</span>中年人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-else</span>&gt;</span>老年人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>v-show</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">年龄&#123;&#123;age&#125;&#125;,经判定为：</span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-show</span>=<span class="string">&quot;age &lt;= 35&quot;</span>&gt;</span>年轻人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>v-for</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">&quot;addr in addrs&quot;</span>&gt;</span>&#123;&#123;addr&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">&quot;(addr,index) in addrs&quot;</span>&gt;</span>&#123;&#123;index+1&#125;&#125; : &#123;&#123;addr&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">	...</span><br><span class="line">	addrs: [&#x27;北京&#x27;,&#x27;上海&#x27;,&#x27;广州&#x27;,&#x27;深圳&#x27;,&#x27;成都&#x27;,&#x27;杭州&#x27;]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
+<li>生命周期：指一个对象从创建到销毁的整个过程</li>
+<li>生命周期的八个阶段：每触发一个生命周期事件，会自动执行一个生命周期方法（钩子）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>阶段周期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>beforeCreate</td>
+<td>创建前</td>
+</tr>
+<tr>
+<td>created</td>
+<td>创建后</td>
+</tr>
+<tr>
+<td>beforeMount</td>
+<td>挂载前</td>
+</tr>
+<tr>
+<td><strong>mounted</strong></td>
+<td><strong>挂载完成</strong></td>
+</tr>
+<tr>
+<td>beforeUpdate</td>
+<td>更新前</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>更新后</td>
+</tr>
+<tr>
+<td>boforeDestory</td>
+<td>销毁前</td>
+</tr>
+<tr>
+<td>destoryed</td>
+<td>销毁后</td>
+</tr>
+</tbody></table>
+<p><img src="/Javaweb/image-20240317211145872.png" alt="image-20240317211145872"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	new Vue(&#123;</span><br><span class="line">        el: &quot;#app&quot;,</span><br><span class="line">       data: &#123;</span><br><span class="line">           </span><br><span class="line">       &#125;,</span><br><span class="line">        mounted()&#123;</span><br><span class="line">            console.log(&quot;Vue挂载完毕，发送请求获取数据&quot;);</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            </span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>mounted：装载完成，Vue初始化完成，HTML页面渲染成功。（发送请求到服务端，加载数据）</li>
+</ul>
+<h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><ul>
+<li>概念：Asynchronous JavaScript And XML ，异步的JavaScript和XML</li>
+<li>作用<ul>
+<li>数据交换：通过Ajax可以给服务器发送请求，并获取服务器响应的数据</li>
+<li>异步交互：可以在<mark>不重新加载整个页面</mark>的情况下，与服务器交换数据并<mark>更新部分网页</mark>的技术，如：搜索联想、用户是否可用的校验等等</li>
+</ul>
+</li>
+</ul>
+<h5 id="同步与异步"><a href="#同步与异步" class="headerlink" title="同步与异步"></a>同步与异步</h5><ul>
+<li>同步</li>
+</ul>
+<p>同步请求发送过程如下图所示：</p>
+<p><img src="/Javaweb/image-20240317220336456.png" alt="image-20240317220336456"></p>
+<p>浏览器页面在发送请求给服务器，在服务器处理请求的过程中，浏览器页面不能做其他的操作。只 能等到服务器响应结束后才能，浏览器页面才能继续做其他的操作。</p>
+<ul>
+<li>异步</li>
+</ul>
+<p>异步请求发送过程如下图所示：</p>
+<p><img src="/Javaweb/image-20240317220409946.png" alt="image-20240317220409946"></p>
+<p>浏览器页面发送请求给服务器，在服务器处理请求的过程中，浏览器页面还可以做其他的操作。</p>
+<h5 id="原生Ajax"><a href="#原生Ajax" class="headerlink" title="原生Ajax"></a>原生Ajax</h5><p>1.准备数据地址：<a target="_blank" rel="noopener" href="https://yapi.smart-xwork.cn/mock/169327/emp/list">https://yapi.smart-xwork.cn/mock/169327/emp/list</a></p>
+<p>2.创建XMLHttpRequest对象：用于和服务器交换数据</p>
+<p>3.向服务器发送请求</p>
+<p>4.获取服务器响应数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 创建XMLHttpRequest</span></span><br><span class="line"><span class="keyword">var</span> xmlHttpRequest = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line"><span class="comment">//2. 发送异步请求</span></span><br><span class="line">xmlHttpRequest.<span class="title function_">open</span>(<span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;https://mock.apifox.cn/m1/3128855-0-default/emp/list&#x27;</span>);</span><br><span class="line">xmlHttpRequest.<span class="title function_">send</span>();<span class="comment">//发送请求</span></span><br><span class="line"><span class="comment">//3. 获取服务响应数据</span></span><br><span class="line">xmlHttpRequest.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"><span class="comment">//此处判断 4表示浏览器已经完全接受到Ajax请求得到的响应， 200表示这是</span></span><br><span class="line">一个正确的<span class="title class_">Http</span>请求，没有错误</span><br><span class="line"><span class="keyword">if</span>(xmlHttpRequest.<span class="property">readyState</span> == <span class="number">4</span> &amp;&amp; xmlHttpRequest.<span class="property">status</span> ==</span><br><span class="line"><span class="number">200</span>)&#123;</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;div1&#x27;</span>).<span class="property">innerHTML</span> =</span><br><span class="line">xmlHttpRequest.<span class="property">responseText</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h5><p>1.引入Axios的js文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js/axios-0.18.0.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.使用Axios发送请求，并获取响应结果</p>
+<ul>
+<li>get请求</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">method:&quot;get&quot;,</span><br><span class="line">url:&quot;http://localhost:8080/ajax-demo1/aJAXDemo1?</span><br><span class="line">username=zhangsan&quot;</span><br><span class="line">&#125;).then(function (resp)&#123;</span><br><span class="line">alert(resp.data);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>post请求</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">method:&quot;post&quot;,</span><br><span class="line">url:&quot;http://localhost:8080/ajax-demo1/aJAXDemo1&quot;,</span><br><span class="line">data:&quot;username=zhangsan&quot;</span><br><span class="line">&#125;).then(function (resp)&#123;</span><br><span class="line">alert(resp.data);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>axios()是用来发送异步请求的，小括号中使用 js的JSON对象传递请求相关的参数：</p>
+<ul>
+<li><p>method属性：用来设置请求方式的。取值为 get 或者 post。</p>
+</li>
+<li><p>url属性：用来书写请求的资源路径。如果是 get 请求，需要将请求参数拼接到路径的后面，格式为： url?参数名&#x3D;参数值&amp;参数名2&#x3D;参数值2。</p>
+</li>
+<li><p>data属性：作为请求体被发送的数据。也就是说如果是 post 请求的话，数据需要作为 data 属性的值。</p>
+</li>
+<li><p>then() 需要传递一个匿名函数。我们将 then()中传递的匿名函数称为 回调函数，意思是该匿名函数在发送请求时不会被调用，而是在成功响应后调用的函数。而该回调函数中的 resp 参数 是对响应的数据进行封装的对象，通过 resp.data 可以获取到响应的数据。</p>
+</li>
+</ul>
+<p>Axios还针对不同的请求，提供了别名方式的api,具体如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>axios.get(url[，config])</td>
+<td>发送get请求</td>
+</tr>
+<tr>
+<td>axios.delete(url[，config])</td>
+<td>发送delete请求</td>
+</tr>
+<tr>
+<td>axios.post(url[，data[，config]])</td>
+<td>发送post请求</td>
+</tr>
+<tr>
+<td>axios.put(url[，data[，config]])</td>
+<td>发送put请求</td>
+</tr>
+</tbody></table>
+<h3 id="前端工程化"><a href="#前端工程化" class="headerlink" title="前端工程化"></a>前端工程化</h3><h4 id="前后端分离"><a href="#前后端分离" class="headerlink" title="前后端分离"></a>前后端分离</h4><p>具体开发一个功能的步骤：</p>
+<ol>
+<li>需求分析：首先我们需要阅读需求文档，分析需求，理解需求。</li>
+<li>接口定义：查询接口文档中关于需求的接口的定义，包括地址，参数，响应数据类型等等 </li>
+<li>前后台并行开发：各自按照接口文档进行开发，实现需求 </li>
+<li>测试：前后台开发完了，各自按照接口文档进行测试</li>
+<li>前后段联调测试：前段工程请求后端工程，测试功能</li>
+</ol>
+<h5 id="Vue项目"><a href="#Vue项目" class="headerlink" title="Vue项目"></a>Vue项目</h5><p>创建</p>
+<p>命令行：vue create vue-project01</p>
+<p>图形化界面：vue ui</p>
+<p><img src="/Javaweb/image-20240318213734590.png" alt="image-20240318213734590"></p>
+<h4 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h4><p>Element：是饿了么团队研发的，一套为开发者、设计者和产品经理准备的基于Vue2.0的桌面端组件库</p>
+<p>组件：组成网页的部件，例如 超链接、按钮、图片、表格、表单、分页条等</p>
+<ul>
+<li>安装ElementUI组件库(在当前工程的目录下)，在命令行执行指令：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install element -ui@2.15.3</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引入ElementUI组件库</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">ElementUI</span> <span class="keyword">from</span> <span class="string">&#x27;element-ui&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">ElementUI</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>访问官网，复制组件代码，调整</li>
+</ul>
+<p>shift+alt+f 代码对齐格式</p>
+<p>Vue项目中使用Axios:</p>
+<ol>
+<li>在项目目录下安装axios：npm install axios；</li>
+<li>需要使用axios时，导入axios：import axios from ‘axios’；</li>
+</ol>
+<h4 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h4><p>前端路由：URL中的hash(#号)与组件之间的对应关系。</p>
+<p>Vue Router</p>
+<p>Vue Router是Vue的官方路由</p>
+<p>组成：</p>
+<ul>
+<li>VueRouter：路由器类，根据路由请求在路由视图中动态渲染选中的组件</li>
+<li><router-link>：请求链接组件，浏览器会解析成<a></li>
+<li><router-view>：动态视图组件，用来渲染展示与路由路径对应的组件</li>
+</ul>
+<p>其工作原理如下图所示：</p>
+<p><img src="/Javaweb/image-20240319213816623.png" alt="image-20240319213816623"></p>
+<ol>
+<li>首先VueRouter根据我们配置的url的hash片段和路由的组件关系去维护一张路由表;</li>
+<li>然后我们页面提供一个组件,用户点击，发出路由请求; </li>
+<li>接着我们的VueRouter根据路由请求，在路由表中找到对应的vue组件；</li>
+<li>最后VueRouter会切换中的组件，从而进行视图的更新</li>
+</ol>
+<ul>
+<li>安装(创建Vue项目时已选择)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-router@3.5.1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义路由</li>
+</ul>
+<h4 id="打包部署"><a href="#打包部署" class="headerlink" title="打包部署"></a>打包部署</h4><ul>
+<li>打包</li>
+</ul>
+<p><img src="/Javaweb/image-20240319215704991.png" alt="image-20240319215704991"></p>
+<ul>
+<li>部署</li>
+</ul>
+<p>nginx: Nginx是一款轻量级的Web服务器&#x2F;反向代理服务器及电子邮件（IMAP&#x2F;POP3）代理服务器。 其特点是占有内存少，并发能力强，在各大型互联网公司都有非常广泛的使用。 niginx在windows中的安装是比较方便的，直接解压即可。如下图所示就是nginx的解压目录以及目录结构说明：</p>
+<p><img src="/Javaweb/image-20240319220206426.png" alt="image-20240319220206426"></p>
+<p>将我们之前打包的前端工程dist目录下得内容拷贝到nginx的html目录下</p>
+<p>然后我们通过双击nginx下得nginx.exe文件来启动nginx，nginx服务器的端口号是80，所以启动成功之后，我们浏览器直接访问<a target="_blank" rel="noopener" href="http://localhost/">http://localhost:80</a> 即 可，其中80端口可以省略，其到此，我们的前端工程发布成功。 PS: 如果80端口被占用，我们需要通过conf&#x2F;nginx.conf配置文件来修改端口号。如下图所示：</p>
+<p><img src="/Javaweb/image-20240319220443569.png" alt="image-20240319220443569"></p>
+<h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><p>Maven是apache旗下的一个开源项目，是一款用于管理和构建java项目的工具</p>
+<p>作用：</p>
+<ol>
+<li>依赖管理：方便快捷的管理项目依赖的资源(jar包)，避免版本冲突问题</li>
+<li>统一项目结构：提供标准、统一的项目结构</li>
+<li>项目构建：标准跨平台（Linux、Windows、MacOS）的自动化项目构建方式</li>
+</ol>
+<p>仓库：用于存储资源，管理各种jar包</p>
+<ul>
+<li>本地仓库：自己计算机上的一个目录</li>
+<li>中央仓库：由Maven团队维护的全球唯一性的仓库，仓库地址为：<a target="_blank" rel="noopener" href="https://repo1.maven.org/maven2/">https://repo1.maven.org/maven2/</a></li>
+<li>远程仓库（私服）：一般由公司团队搭建的私有仓库</li>
+</ul>
+<p>安装步骤：</p>
+<ol>
+<li>解压apache-maven-3.6.1-bin.zip</li>
+<li>配置本地仓库：修改conf&#x2F;settings.xml中的<localRepository>为一个指定目录</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\delvelop\apache-maven-3.6.1\mvn_repo<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>配置阿里云私服：修改conf&#x2F;settings.xml中的<mirrors>标签，为其添加如下子标签：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>配置环境变量：MAVEN_HOME为maven的解压缩目录，并将其bin目录加入PATH环境变量</li>
+</ol>
+<p><strong>配置Maven环境(当前工程)</strong></p>
+<ul>
+<li>选择IDEA中 File –&gt; Settings –&gt; Build，Execution，Deployment –&gt; Build Tools –&gt; Maven</li>
+<li>设置IDEA使用本地安装的Maven，并修改配置文件及本地仓库路径</li>
+</ul>
+<p><strong>配置Maven环境(全局)</strong></p>
+<ul>
+<li><p>直接在创建项目栏按上述操作即可，不必打开项目</p>
+</li>
+<li><p>选择IDEA中 File –&gt; Settings –&gt; Build，Execution，Deployment –&gt; Build Tools –&gt; Maven</p>
+</li>
+<li><p>设置IDEA使用本地安装的Maven，并修改配置文件及本地仓库路径</p>
+</li>
+</ul>
+<p><strong>IDEA创建Maven项目</strong></p>
+<ol>
+<li>创建模板，选择Maven，点击Next</li>
+<li>填写模块名称，坐标信息，点击finish，创建完成</li>
+<li>编写HelloWorld，并运行</li>
+</ol>
+<p><strong>Maven坐标</strong></p>
+<ul>
+<li>Maven中的坐标是<mark>资源的唯一标识，通过该坐标可以唯一定位资源位置</mark></li>
+<li>使用坐标来定义项目或者引入项目中需要的依赖</li>
+</ul>
+<p>Maven坐标主要组成</p>
+<ul>
+<li>groupId：定义当前Maven项目隶属组织名称（通常是域名反写，例如：com.ithema）</li>
+<li>artifactId：定义当前Maven项目名称（通常是模块名称，例如：order-service，goods-services）</li>
+<li>version：定义当前项目版本号</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.ithema<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-project01<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-classic<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>导入Maven项目</strong></p>
+<p>方式一：打开IDEA，选择右侧Maven面板，点击+号，选中对应项目的pom.xml文件，双击即可</p>
+<p>方式二：File  &#x3D;&gt;  Project Structure  &#x3D;&gt;  Modules  &#x3D;&gt;  +  &#x3D;&gt;  Import Module</p>
+<h4 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h4><ul>
+<li>依赖：指当前项目运行所需的jar包，一个项目可以引用多个依赖</li>
+<li>配置：<ol>
+<li>在pom.xml中编写<dependencies>标签</li>
+<li>在<dependencies>标签中使用<dependency>引入坐标</li>
+<li>定义坐标的groupId、artifacId、version</li>
+<li>点击刷新按钮，引入最新加入的坐标</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-classic<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意事项：</p>
+<ul>
+<li>如果引入的依赖，在本地仓库不存在，将会连接远程仓库&#x2F;中央仓库，然后下载依赖。（这个过程会比较耗时，需要耐心等待）</li>
+<li>如果不知道依赖的坐标信息，可以到<a target="_blank" rel="noopener" href="https://mvnrepository.com/%E4%B8%AD%E6%90%9C%E7%B4%A2">https://mvnrepository.com/中搜索</a></li>
+</ul>
+<p><strong>依赖传递</strong></p>
+<p>依赖具有传递性</p>
+<ul>
+<li><p>直接依赖：在当前项目中通过依赖配置建立的依赖关系</p>
+</li>
+<li><p>间接依赖：被依赖的资源如果依赖其他资源，当前项目间接依赖其他资源</p>
+</li>
+<li><p>排除依赖：排除依赖指主动断开依赖的资源，被排除的资源无需指定版本，通过添加<exclusion>标签来排除依赖</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt; !-- 排除依赖 --&gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.itheima<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-projectB<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 排除依赖--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>    </span><br></pre></td></tr></table></figure>
+
+<p><strong>依赖范围</strong></p>
+<p>依赖的jar包，默认情况下，可以在任何地方使用，可以通过<code>&lt;scope&gt;...&lt;/scope&gt;</code>设置其作用范围。</p>
+<p>作用范围：</p>
+<ul>
+<li>主程序范围有效。（main文件夹范围内）</li>
+<li>测试程序范围有效。（test文件夹范围内）</li>
+<li>是否参与打包运行。（package指令范围内）</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span>     </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>scope值</th>
+<th>主程序</th>
+<th>测试程序</th>
+<th>打包（运行）</th>
+<th>范例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>compile（默认值）</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>log4j</td>
+</tr>
+<tr>
+<td>test</td>
+<td>-</td>
+<td>Y</td>
+<td>-</td>
+<td>junit</td>
+</tr>
+<tr>
+<td>provided</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>servlet-api</td>
+</tr>
+<tr>
+<td>runtime</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>jdbc驱动</td>
+</tr>
+</tbody></table>
+<p><strong>生命周期</strong></p>
+<p>Maven的生命周期就是为了对所有的maven项目构建过程进行抽象和统一</p>
+<p>Maven中有3套<mark>相互独立</mark>的生命周期：</p>
+<ul>
+<li>clean：清理工作</li>
+<li>default：核心工作，如：编译、测试、打包、安装、部署等</li>
+<li>site：生成报告、发布站点等</li>
+</ul>
+<p>每套生命周期包含一些阶段（phase），阶段是有顺序的，后面的阶段依赖于前面的阶段。</p>
+<p><img src="/Javaweb/image-20240320220909859.png" alt="image-20240320220909859"></p>
+<p>我们看到这三套生命周期，里面有很多很多的阶段，这么多生命周期阶段，其实常用的并不多，主要关注以下几个：</p>
+<ul>
+<li>clean：移除上一次构建生成的文件 </li>
+<li>compile：编译项目源代码 </li>
+<li>test：使用合适的单元测试框架运行测试(junit) </li>
+<li>package：将编译后的文件打包，如：jar、war等 </li>
+<li>install：安装项目到本地仓库</li>
+</ul>
+<p><mark>注意事项：在同一套生命周期中，当运行后面的阶段时，前面的阶段也会运行。</mark></p>
+<p>执行指定生命周期的两种方式：</p>
+<ul>
+<li>在idea中，右侧的maven工具栏，选中对应的生命周期，双击执行</li>
+<li>在命令行执行时，通过命令执行</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mvn clean</span><br><span class="line">mvn compile</span><br><span class="line">mvn package</span><br><span class="line">mvn test</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="Web入门"><a href="#Web入门" class="headerlink" title="Web入门"></a>Web入门</h3><h4 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h4><p>官网：<a>spring.io</a></p>
+<p>Spring发展到今天已经形成了一种生态开发生态圈，Sring提供了若干个子项目，每个项目用于完成特定的功能</p>
+<p>SpringBootWeb快速入门</p>
+<p>需求：使用SpringBoot开发一个web应用，浏览器发起请求&#x2F;hello后，给浏览器返回字符串”Hello World ~”</p>
+<p>步骤：</p>
+<ol>
+<li>创建springboot工程，并勾选web开发相关依赖</li>
+<li>定义HelloController类，添加方法Hello，并添加注解</li>
+<li>运行测试</li>
+</ol>
+<p>创建请求处理类HelloController，添加请求处理方法Hello，并添加注解</p>
+<p><img src="/Javaweb/image-20240322101929831.png" alt="image-20240322101929831"></p>
+<p>运行启动类，打开浏览器测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:8080/hello</span><br></pre></td></tr></table></figure>
+
+<h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><p>概念：Hyper Text Transfer Protocol，超文本传输协议，规定了浏览器和服务器之间数据传输的规则</p>
+<p>特点：</p>
+<ul>
+<li>基于TCP协议：面向连接、安全</li>
+<li>基于请求-响应模型的：一次请求对应一次响应</li>
+<li>HTTP协议是无状态的协议：对于事务处理没有记忆能力，每次请求-响应都是独立的<ul>
+<li>优点：速度快</li>
+<li>缺点：多次请求间不能共享数据</li>
+</ul>
+</li>
+</ul>
+<h5 id="请求协议"><a href="#请求协议" class="headerlink" title="请求协议"></a>请求协议</h5><p><strong>请求数据格式</strong></p>
+<p>请求行：请求数据第一行（请求方式、资源路径、协议）</p>
+<p>请求头：第二行开始，格式：key - value</p>
+<table>
+<thead>
+<tr>
+<th>Host</th>
+<th>请求的主机名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>User-Agent</td>
+<td>浏览器版本，例如Chrome浏览器的标示类似Mozilla&#x2F;5.0…Chrome&#x2F;79，IE浏览器的标示类似Mozilla&#x2F;5.0(Windows NT …) like Gecko（<strong>考虑浏览器兼容问题</strong>）</td>
+</tr>
+<tr>
+<td>Accept</td>
+<td>表示浏览器能接收的资源类型，如text&#x2F;*，image&#x2F;<em>或者</em>&#x2F;*表示所有</td>
+</tr>
+<tr>
+<td>Accept-Language</td>
+<td>表示浏览器偏好的语言，服务器可以根据此返回不同语言的网页</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>表示浏览器可以支持的压缩类型，例如gzip、deflate等</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>请求主体的数据类型</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>请求主体的大小（单位：字节）</td>
+</tr>
+</tbody></table>
+<p>请求体：POST请求，存放请求参数</p>
+<p><strong>请求方式-GET</strong>：请求参数在请求行中，没有请求体，如&#x2F;brand&#x2F;findAll?name&#x3D;OPPO&amp;status&#x3D;1。GET请求是有大小限制的</p>
+<p><strong>请求方式-POST</strong>：请求参数在请求体中，POST请求是没有大小限制的</p>
+<h5 id="响应协议"><a href="#响应协议" class="headerlink" title="响应协议"></a>响应协议</h5><p>响应行：响应数据第一行（协议、状态码、描述）</p>
+<p>响应头：从第二行开始，格式为 key : value</p>
+<p>响应体：最后一部分，存放响应数据</p>
+<p><strong>HTTP响应格式</strong></p>
+<table>
+<thead>
+<tr>
+<th>1xx</th>
+<th>响应中-临时状态码，表示请求已经接收，告诉客户端应该继续请求或者如果它已经完成则忽略它</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2xx</td>
+<td>成功-表示请求已经被成功接收，处理已完成</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td>重定向-重定向到其他地方：让客户端再发起一次请求以完成整个处理</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td>客户端错误-处理发生错误，责任在客户端，如：请求了不存在的资源、客户端未授权、禁止访问等</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td>服务器错误-处理发生错误，责任在服务端，如：程序抛出异常等</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Contenet-Type</th>
+<th>表示该响应内容的类型，例如text&#x2F;html，application&#x2F;json</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Content-Length</td>
+<td>表示该响应内容的长度（即字节）</td>
+</tr>
+<tr>
+<td>Content-Encoding</td>
+<td>表示该响应压缩算法，例如gzip</td>
+</tr>
+<tr>
+<td>Cache-Control</td>
+<td>提示客户端如何缓存，例如max-age&#x3D;300表示可以最多缓存300秒</td>
+</tr>
+<tr>
+<td>Set-Cookie</td>
+<td>告诉浏览器为当前页面所在的域设置Cookie</td>
+</tr>
+</tbody></table>
+<p><strong>常见的响应状态码</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>英文描述</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;&#x3D;200&#x3D;&#x3D;</td>
+<td><strong><code>OK</code></strong></td>
+<td>客户端请求成功，即<strong>处理成功</strong>，这是我们最想看到的状态码</td>
+</tr>
+<tr>
+<td>302</td>
+<td><strong><code>Found</code></strong></td>
+<td>指示所请求的资源已移动到由<code>Location</code>响应头给定的 URL，浏览器会自动重新访问到这个页面</td>
+</tr>
+<tr>
+<td>304</td>
+<td><strong><code>Not Modified</code></strong></td>
+<td>告诉客户端，你请求的资源至上次取得后，服务端并未更改，你直接用你本地缓存吧。隐式重定向</td>
+</tr>
+<tr>
+<td>400</td>
+<td><strong><code>Bad Request</code></strong></td>
+<td>客户端请求有<strong>语法错误</strong>，不能被服务器所理解</td>
+</tr>
+<tr>
+<td>403</td>
+<td><strong><code>Forbidden</code></strong></td>
+<td>服务器收到请求，但是<strong>拒绝提供服务</strong>，比如：没有权限访问相关资源</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;404&#x3D;&#x3D;</td>
+<td><strong><code>Not Found</code></strong></td>
+<td><strong>请求资源不存在</strong>，一般是URL输入有误，或者网站资源被删除了</td>
+</tr>
+<tr>
+<td>405</td>
+<td><strong><code>Method Not Allowed</code></strong></td>
+<td>请求方式有误，比如应该用GET请求方式的资源，用了POST</td>
+</tr>
+<tr>
+<td>428</td>
+<td><strong><code>Precondition Required</code></strong></td>
+<td><strong>服务器要求有条件的请求</strong>，告诉客户端要想访问该资源，必须携带特定的请求头</td>
+</tr>
+<tr>
+<td>429</td>
+<td><strong><code>Too Many Requests</code></strong></td>
+<td>指示用户在给定时间内发送了<strong>太多请求</strong>（“限速”），配合 Retry-After(多长时间后可以请求)响应头一起使用</td>
+</tr>
+<tr>
+<td>431</td>
+<td><strong><code> Request Header Fields Too Large</code></strong></td>
+<td><strong>请求头太大</strong>，服务器不愿意处理请求，因为它的头部字段太大。请求可以在减少请求头域的大小后重新提交。</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;500&#x3D;&#x3D;</td>
+<td><strong><code>Internal Server Error</code></strong></td>
+<td><strong>服务器发生不可预期的错误</strong>。服务器出异常了，赶紧看日志去吧</td>
+</tr>
+<tr>
+<td>503</td>
+<td><strong><code>Service Unavailable</code></strong></td>
+<td><strong>服务器尚未准备好处理请求</strong>，服务器刚刚启动，还未初始化好</td>
+</tr>
+</tbody></table>
+<p>状态码大全：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/chapter/13553">https://cloud.tencent.com/developer/chapter/13553</a> </p>
+<h4 id="Web服务器-Tomcat"><a href="#Web服务器-Tomcat" class="headerlink" title="Web服务器-Tomcat"></a><strong>Web服务器-Tomcat</strong></h4><p>Web服务器是一个软件程序，对HTTP协议的操作进行封装，使得程序员不必直接对协议进行操作，让Web开发更加便捷。主要功能是“提供网上信息浏览服务”。</p>
+<p>Tomcat是Apache软件基金会的一个核心项目，是一个开源免费的轻量级web服务器，支持Servlet&#x2F;JSP少量JavaEE规范</p>
+<p>JavaEE：java Enterprise Edition，java企业版。指java企业级开发的技术规范总和，包含13项技术规范：JDBC、JNDI、EJB、RMI、JSP、Servlet、XML、JMS、java IDL 、JTS、JTA、javaMall、JAF</p>
+<p>Tomcat也被称为Web容器、Servlet容器，Servlet程序需要依赖于Tomcat才能运行</p>
+<p>官网：<a target="_blank" rel="noopener" href="https://tomcat.apache.org/">https://tomcat.apache.org/</a></p>
+<p>Tomcat的基本使用：</p>
+<ul>
+<li>下载：官网地址 <a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-90.cgi">https://tomcat.apache.org/download-90.cgi</a></li>
+<li>安装：绿色版，直接解压即可</li>
+<li>卸载：直接删除目录即可</li>
+<li>启动：双击Tomcat文件中bin文件里的startup.bat</li>
+</ul>
+<p><code>控制台中文乱码：修改conf/logging.properties</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java.util.logging.ConsoleHandler.level = FINE</span><br><span class="line">java.util.logging.ConsoleHandler.formatter = org.apache.juli.OneLineFormatter</span><br><span class="line">java.util.logging.ConsoleHandler.encoding = GBK  <span class="comment">//UTF-8 改为GBK</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关闭：<ul>
+<li>直接x掉运行窗口：强制关闭</li>
+<li>bin\shutdown.bat：正常关闭</li>
+<li>Ctrl+C：正常关闭</li>
+</ul>
+</li>
+<li>配置Tomcat端口号（conf&#x2F;server.xml）</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">&quot;8080&quot;</span> <span class="attr">protocol</span>=<span class="string">&quot;HTTP/1.1&quot;</span></span></span><br><span class="line"><span class="tag">               <span class="attr">connectionTimeout</span>=<span class="string">&quot;20000&quot;</span></span></span><br><span class="line"><span class="tag">               <span class="attr">redirectPort</span>=<span class="string">&quot;8443&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Tomcat部署项目</li>
+</ul>
+<p>将项目放置到webapps目录下，即部署完成</p>
+<p>常见问题：</p>
+<ul>
+<li>启动窗口一闪而过：检查JAVA_HOME环境变量是否正确配置</li>
+<li>端口号冲突：找到对应程序，将其关闭掉</li>
+</ul>
+<p><mark>注意事项：HTTP协议默认端口号为80，如果将Tomcat端口号改为80，则将来访问Tomcat时，不需要输入端口号</mark></p>
+<p>起步依赖：</p>
+<ul>
+<li>spring-boot-starter-web：包含了web应用开发所需要的常见依赖</li>
+<li>spring-boot-starter-test：包含了单元测试所需要的常见依赖</li>
+<li>官方提供的starter：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/2.7.4/reference/htmlsingle/#using.build-systems.starters">https://docs.spring.io/spring-boot/docs/2.7.4/reference/htmlsingle/#using.build-systems.starters</a></li>
+</ul>
+<p>基于Springboot开发的web应用程序，内置了tomcat服务器，当启动类运行时，会自动启动内嵌的tomcat服务器</p>
+<h3 id="请求响应"><a href="#请求响应" class="headerlink" title="请求响应"></a>请求响应</h3><ul>
+<li>请求（HttpServletRequest）：获取请求数据</li>
+<li>响应（HttpServletResponse）：设置响应数据</li>
+<li>BS架构：Brower&#x2F;Server，浏览器 &#x2F; 服务器架构模式。客户端只需要浏览器，应用程序的逻辑和数据都存储在服务端。（维护方便 体验一般）</li>
+<li>CS架构：Client &#x2F; Server，客户端 &#x2F; 服务器架构模式。（开发、维护麻烦、体验不错）</li>
+</ul>
+<h4 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h4><p>Postman是一款功能强大的网页调试与发送网页HTTP请求的Chrome插件。</p>
+<p>作用：常用于进行接口测试</p>
+<p><strong>简单参数</strong></p>
+<p>简单参数：参数名与形参变量名相同，定义形参即可接收参数</p>
+<p>如果方法形参名称与请求参数名称不匹配，可以使用<code>@RequestParam</code>完成映射</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/simpleParam&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">simpleParam</span><span class="params">(<span class="meta">@RequestParam(name = &quot;name&quot;)</span>String username,Integer age)</span>&#123;</span><br><span class="line">       System.out.println(username+<span class="string">&quot; : &quot;</span>+age);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p><mark>注意事项：@RequestParam中的required属性默认为true，代表该请求参数必须传递，如果不传递则报错。如果该参数是可选的，可以将required属性设置为false</mark></p>
+<ul>
+<li>原始方式</li>
+</ul>
+<p>在原始的web程序中，获取请求参数，需要通过HttpServletRequest对象手动获取。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/simpleParam&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">simpleParam</span><span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">ageStr</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;age&quot;</span>);</span><br><span class="line">    <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> Integer.parseInt(ageStr);</span><br><span class="line">    System.out.println(name+<span class="string">&quot; : &quot;</span>+age);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>实体参数</strong></p>
+<p>简单实体对象：请求参数名与形参名对象属性名相同，定义POJO接收即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/simplePoJo&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">simplePojo</span><span class="params">(User user)</span>&#123;</span><br><span class="line">    System.out.println(user);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>复杂实体对象：请求参数名与形参对象属性名相同，按照对象层次结构关系即可接收嵌套POJO属性参数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/simplePoJo&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">simplePojo</span><span class="params">(User user)</span>&#123;</span><br><span class="line">    System.out.println(user);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> Address address;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> Address&#123;</span><br><span class="line">    <span class="keyword">private</span> String province;</span><br><span class="line">    <span class="keyword">private</span> String city;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>数组集合参数</strong></p>
+<p>数组参数：请求参数名与形参数组名称相同且请求参数为多个，定义数组类型形参即可接收参数</p>
+<ul>
+<li>数组接收：请求参数名与形参中数组变量名相同，可以直接使用数组封装</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/arrayParam&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">arrayParam</span><span class="params">(String[] hobby)</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;Arrays.toString(hobby)&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>集合接收：请求参数名与形参中集合变量名相同，通过<code>@RequestParam</code>绑定参数关系</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/listParam&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">listParam</span><span class="params">(<span class="meta">@RequestParam</span> List&lt;String&gt; hobby)</span>&#123;</span><br><span class="line">    System.out.println(hobby);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Ok&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>日期参数</strong></p>
+<p>日期参数：使用<code>@DateTimeFormat</code>注解完成日期格式参数转换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/dateParam&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">dateParam</span><span class="params">(<span class="meta">@DateTimeFormat(pattern=&quot;yyyy-MM-dd HH:mm:ss&quot;)</span>LocalDateTime updateTime)</span>&#123;</span><br><span class="line">    System.out.println(updateTime);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>JSON参数</strong></p>
+<p>JSON参数：JSON数据键名与形参对象属性名相同，定义POJO类型形参即可接收参数，需要使用<code>@RequestBody</code>标识</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/jsonParam&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jsonParam</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span>&#123;</span><br><span class="line">        System.out.println(user);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> Address address;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> Address&#123;</span><br><span class="line">    <span class="keyword">private</span> String province;</span><br><span class="line">    <span class="keyword">private</span> String city;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>路径参数</strong></p>
+<p>路径参数：通过请求URL直接传递参数，使用{…}来标识该路径参数，需要使用<code>@PathVariable</code>获取路径参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/path/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">pathParam</span><span class="params">(<span class="meta">@PathVariable</span> Integer id)</span>&#123;</span><br><span class="line">        System.out.println(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取多个路径参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/path/&#123;id&#125;/&#123;name&#125;&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">pathParam2</span><span class="params">(<span class="meta">@PathVariable</span> Integer id , <span class="meta">@PathVariable</span> String name)</span>&#123;</span><br><span class="line">       System.out.println(id);</span><br><span class="line">       System.out.println(name);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="响应"><a href="#响应" class="headerlink" title="响应"></a>响应</h4><p><code>ResponseBody</code></p>
+<ul>
+<li>类型：<mark>方法注解、类注解</mark></li>
+<li>位置：Controller方法上 &#x2F; 类上</li>
+<li>作用：将方法返回值直接响应，如果返回值类型是 实体对象 &#x2F; 集合，将会转换为JSON格式响应</li>
+<li>说明：@RestController &#x3D; @Controller + @ResonseBody</li>
+</ul>
+<p>响应-字符串</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello World ~&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello World ~&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>响应-JSON对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/getAddr&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> Address <span class="title function_">getAddr</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="type">Address</span> <span class="variable">addr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Address</span>();</span><br><span class="line">       addr.setProvince(<span class="string">&quot;广东&quot;</span>);</span><br><span class="line">       addr.setCity(<span class="string">&quot;深圳&quot;</span>);</span><br><span class="line">       <span class="keyword">return</span> addr;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>响应-JSON集合</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/listAddr&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Address&gt; <span class="title function_">listAddr</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;Address&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="type">Address</span> <span class="variable">addr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Address</span>();</span><br><span class="line">        addr.setProvince(<span class="string">&quot;广东&quot;</span>);</span><br><span class="line">        addr.setCity(<span class="string">&quot;深圳&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">Address</span> <span class="variable">addr2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Address</span>();</span><br><span class="line">        addr2.setProvince(<span class="string">&quot;陕西&quot;</span>);</span><br><span class="line">        addr2.setCity(<span class="string">&quot;西安&quot;</span>);</span><br><span class="line"></span><br><span class="line">        list.add(addr);</span><br><span class="line">        list.add(addr2);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>统一响应结果</p>
+<p>Result（code、msg、data）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Result</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Integer code ;<span class="comment">//1 成功 , 0 失败</span></span><br><span class="line">    <span class="keyword">private</span> String msg; <span class="comment">//提示信息</span></span><br><span class="line">    <span class="keyword">private</span> Object data; <span class="comment">//数据 date</span></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">static</span> Result <span class="title function_">success</span><span class="params">(Object data)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Result</span>(<span class="number">1</span>, <span class="string">&quot;success&quot;</span>, data);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Result <span class="title function_">success</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Result</span>(<span class="number">1</span>, <span class="string">&quot;success&quot;</span>, <span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Result <span class="title function_">error</span><span class="params">(String msg)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Result</span>(<span class="number">0</span>, msg, <span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello World ~&quot;</span>);</span><br><span class="line">        <span class="comment">//return new Result(1,&quot;success&quot;,&quot;Hello World ~&quot;);</span></span><br><span class="line">        <span class="keyword">return</span> Result.success(<span class="string">&quot;Hello World ~&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/getAddr&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">getAddr</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Address</span> <span class="variable">addr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Address</span>();</span><br><span class="line">        addr.setProvince(<span class="string">&quot;广东&quot;</span>);</span><br><span class="line">        addr.setCity(<span class="string">&quot;深圳&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> Result.success(addr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/listAddr&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">listAddr</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;Address&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="type">Address</span> <span class="variable">addr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Address</span>();</span><br><span class="line">        addr.setProvince(<span class="string">&quot;广东&quot;</span>);</span><br><span class="line">        addr.setCity(<span class="string">&quot;深圳&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">Address</span> <span class="variable">addr2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Address</span>();</span><br><span class="line">        addr2.setProvince(<span class="string">&quot;陕西&quot;</span>);</span><br><span class="line">        addr2.setCity(<span class="string">&quot;西安&quot;</span>);</span><br><span class="line"></span><br><span class="line">        list.add(addr);</span><br><span class="line">        list.add(addr2);</span><br><span class="line">        <span class="keyword">return</span> Result.success(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><mark>Springboot项目的静态资源（html、css、js等前端资源）默认存放目录为：classpath:&#x2F;static，classpath:&#x2F;public，classpath:&#x2F;resources</mark></p>
+<h3 id="分层解耦"><a href="#分层解耦" class="headerlink" title="分层解耦"></a>分层解耦</h3><h4 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h4><ul>
+<li><strong>controller</strong>：控制层，接收前端发送的请求，对请求进行处理，并响应数据。</li>
+<li><strong>service</strong>：业务逻辑层，处理具体的业务逻辑。</li>
+<li><strong>dao</strong>：数据访问层（Data Access Object）（持久层），负责数据访问操作，包括数据的增、删、改、查。</li>
+</ul>
+<p>按员工案例拆分成三层架构后如下：</p>
+<ul>
+<li>controller层：接收请求，响应数据</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpController</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">EmpService</span> <span class="variable">empService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EmpServiceA</span>();</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/listEmp&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">list</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException &#123;</span><br><span class="line">               <span class="comment">//调用service,获取数据</span></span><br><span class="line">        List&lt;Emp&gt; empList = empService.listEmp();</span><br><span class="line">        <span class="comment">//3. 响应数据</span></span><br><span class="line">        <span class="keyword">return</span> Result.success(empList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>dao层：数据访问操作</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpDaoA</span> <span class="keyword">implements</span> <span class="title class_">EmpDao</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Emp&gt; <span class="title function_">listEmp</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException &#123;</span><br><span class="line">        <span class="comment">//1. 加载并解析emp.xml</span></span><br><span class="line"><span class="comment">//        String file = this.getClass().getClassLoader().getResource(&quot;emp.xml&quot;).getFile();</span></span><br><span class="line"><span class="comment">//        含有中文目录改成下面这个代码</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">file</span> <span class="operator">=</span> <span class="built_in">this</span>.getClass().getClassLoader().getResource(<span class="string">&quot;emp.xml&quot;</span>).toURI().getPath();</span><br><span class="line">        System.out.println(file);</span><br><span class="line">        List&lt;Emp&gt; empList = XmlParserUtils.parse(file, Emp.class);</span><br><span class="line">        <span class="keyword">return</span> empList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>service层：业务逻辑处理</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpServiceA</span> <span class="keyword">implements</span> <span class="title class_">EmpService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">EmpDao</span> <span class="variable">empDao</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EmpDaoA</span>();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Emp&gt; <span class="title function_">listEmp</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.调用dao，获取数据</span></span><br><span class="line">        List&lt;Emp&gt; empList = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            empList = empDao.listEmp();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (URISyntaxException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//2. 对数据进行转换处理 - gender, job</span></span><br><span class="line">        empList.stream().forEach(emp -&gt; &#123;</span><br><span class="line">            <span class="comment">//处理 gender 1: 男, 2: 女</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">gender</span> <span class="operator">=</span> emp.getGender();</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">&quot;1&quot;</span>.equals(gender))&#123;</span><br><span class="line">                emp.setGender(<span class="string">&quot;男&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;2&quot;</span>.equals(gender))&#123;</span><br><span class="line">                emp.setGender(<span class="string">&quot;女&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//处理job - 1: 讲师, 2: 班主任 , 3: 就业指导</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">job</span> <span class="operator">=</span> emp.getJob();</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">&quot;1&quot;</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">&quot;讲师&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;2&quot;</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">&quot;班主任&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;3&quot;</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">&quot;就业指导&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> empList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="分层解耦-1"><a href="#分层解耦-1" class="headerlink" title="分层解耦"></a>分层解耦</h4><ul>
+<li>内聚：软件中各个功能模块内部的功能联系。</li>
+<li>耦合：衡量软件中各个层&#x2F;模块之间的依赖、关联的程度。</li>
+<li>软件设计原则：<strong>高内聚低耦合</strong>。</li>
+</ul>
+<p><strong>控制反转</strong>：Inversion Of Control，简称<strong>IOC</strong>。对象的创建控制权由程序自身转移到外部（容器），这种思想称为控制反转。</p>
+<p><strong>依赖注入</strong>：Dependency Injection，简称<strong>DI</strong>。容器为应用程序提供运行时所依赖的资源，称之为依赖注入。</p>
+<p><strong>Bean对象</strong>：IOC容器中创建、管理的对象，称之为<strong>bean</strong>。</p>
+<h4 id="IOC-DI-入门"><a href="#IOC-DI-入门" class="headerlink" title="IOC &amp; DI 入门"></a>IOC &amp; DI 入门</h4><ol>
+<li>Service层 及 Dao层的实现类，交给IOC容器管理。– 加上<code>@Component</code></li>
+<li>为Controller及Service注入运行时依赖的对象。 – 在成员变量前面加上<code>@Autowired</code></li>
+<li>运行测试。</li>
+</ol>
+<ul>
+<li>Dao层</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpDaoA</span> <span class="keyword">implements</span> <span class="title class_">EmpDao</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Emp&gt; <span class="title function_">listEmp</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException &#123;</span><br><span class="line">        <span class="comment">//1. 加载并解析emp.xml</span></span><br><span class="line"><span class="comment">//        String file = this.getClass().getClassLoader().getResource(&quot;emp.xml&quot;).getFile();</span></span><br><span class="line"><span class="comment">//        含有中文目录改成下面这个代码</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">file</span> <span class="operator">=</span> <span class="built_in">this</span>.getClass().getClassLoader().getResource(<span class="string">&quot;emp.xml&quot;</span>).toURI().getPath();</span><br><span class="line">        System.out.println(file);</span><br><span class="line">        List&lt;Emp&gt; empList = XmlParserUtils.parse(file, Emp.class);</span><br><span class="line">        <span class="keyword">return</span> empList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Service层</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpServiceA</span> <span class="keyword">implements</span> <span class="title class_">EmpService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EmpDao empDao;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Emp&gt; <span class="title function_">listEmp</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.调用dao，获取数据</span></span><br><span class="line">        List&lt;Emp&gt; empList = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            empList = empDao.listEmp();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (URISyntaxException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//2. 对数据进行转换处理 - gender, job</span></span><br><span class="line">        empList.stream().forEach(emp -&gt; &#123;</span><br><span class="line">            <span class="comment">//处理 gender 1: 男, 2: 女</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">gender</span> <span class="operator">=</span> emp.getGender();</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">&quot;1&quot;</span>.equals(gender))&#123;</span><br><span class="line">                emp.setGender(<span class="string">&quot;男&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;2&quot;</span>.equals(gender))&#123;</span><br><span class="line">                emp.setGender(<span class="string">&quot;女&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//处理job - 1: 讲师, 2: 班主任 , 3: 就业指导</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">job</span> <span class="operator">=</span> emp.getJob();</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">&quot;1&quot;</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">&quot;讲师&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;2&quot;</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">&quot;班主任&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;3&quot;</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">&quot;就业指导&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> empList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Controller层</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EmpService empService;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/listEmp&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">list</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException &#123;</span><br><span class="line">        <span class="comment">//调用Dao层，查询数据</span></span><br><span class="line">        List&lt;Emp&gt; empList = empService.listEmp();</span><br><span class="line">        <span class="comment">//3. 响应数据</span></span><br><span class="line">        <span class="keyword">return</span> Result.success(empList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>若需要使用其他接口的实现类，则只需要将当前使用的接口实现类中的<code>@Component</code>注释掉即可</p>
+<h4 id="IOC详解"><a href="#IOC详解" class="headerlink" title="IOC详解"></a>IOC详解</h4><p><strong>Bean的声明</strong></p>
+<p>要把某个对象交给IOC容器管理，需要在对应的类上加上如下注解之一：</p>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>说明</th>
+<th>位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Component</td>
+<td>声明bean对象的基础注解</td>
+<td>不属于以下三类时，用此注解</td>
+</tr>
+<tr>
+<td>@Controller</td>
+<td>@Component的衍生注解</td>
+<td>标注在控制器类上</td>
+</tr>
+<tr>
+<td>@Service</td>
+<td>@Component的衍生注解</td>
+<td>标注在业务上</td>
+</tr>
+<tr>
+<td>@Repository</td>
+<td>@Component的衍生注解</td>
+<td>标注在数据访问类上（由于与mybatis整合，用的少）</td>
+</tr>
+</tbody></table>
+<p>注意事项：</p>
+<ul>
+<li>声明bean的时候，可以通过value属性指定bean的名字，如果没有指定，默认为类名首字母小写。</li>
+<li>使用以上四个注解都可以声明bean，但是在springboot集成web开发中，声明控制器bean只能用<code>@Controller</code>。</li>
+</ul>
+<p><strong>Bean组件扫描</strong></p>
+<ul>
+<li>前面声明bean的四大注解，要想生效，还需要被组件扫描注解<code>@ComponentScan</code>扫描。</li>
+<li><code>@ComponentScan</code>注解虽然没有显式配置，但是实际上已经包含在了启动类声明注解<code>@SpringBootApplication</code>中，默认扫描的范围是启动类所在包及其子包。</li>
+</ul>
+<p>如果其中一个包未放在启动包下面，则可以通过以下方法解决：</p>
+<ul>
+<li>手动添加@ComponentScan注解，指定要扫描的包   （&#x3D;&#x3D;仅做了解，不推荐&#x3D;&#x3D;）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加以下注解</span></span><br><span class="line"><span class="meta">@Component(&#123;&quot;包名1&quot;,&quot;包名2&quot;&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将我们定义的controller，service，dao这些包都放在引导类所在包com.itheima的子包下，这样我们定义的bean就会被自动的扫描到</li>
+</ul>
+<h4 id="DI详解"><a href="#DI详解" class="headerlink" title="DI详解"></a>DI详解</h4><p>依赖注入，是指IOC容器要为应用程序去提供运行时所依赖的资源，而资源指的就是对象。</p>
+<p>@Autowired注解，默认是按照<mark>类型</mark>进行，如果存在多个相同类型的bean，将会报错，以下是几种解决方案</p>
+<ol>
+<li><code>@Primary</code>设定优先级</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpServiceA</span> <span class="keyword">implements</span> <span class="title class_">EmpService</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><code>@Qualifier</code>配合<code>@Autowired</code>使用（@Antowiredf + @Qulifier(“bean的名称”)）</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpController</span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;empServiceA&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> EmpService empService;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用<code>@Resource</code>（@Resource(name &#x3D; “bean的名称”)）</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpController</span>&#123;</span><br><span class="line">    <span class="meta">@Resource(name = &quot;empServiceB&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> EmpService empService;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><mark>@Resource和@Autowired区别</mark></p>
+<ul>
+<li>@Autowired是springboot框架提供的注解，而@Resource是JDK提供的注解。</li>
+<li>@Autowired默认是按照类型注入，而@Resource默认是按照名称注入。</li>
+</ul>
+<h3 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h3><p>MyBatis是一款优秀的<mark>持久层</mark>框架，用于简化JDBC的开发。</p>
+<p>MyBaits本是Apache的一个开源项目iBatis，2010年该项目由Apache迁移到了google code，并且改名为MyBatis。2013年11月迁移到Github。</p>
+<p>官网：<a target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/index.html">https://mybatis.org/mybatis-3/zh/index.html</a></p>
+<h4 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h4><p>案例：使用mybatis查询所有用户数据</p>
+<ol>
+<li>准备工作（创建springboot工程，数据库表user，实体类user）</li>
+<li>引入Mybatis的相关依赖，配置Mybatis</li>
+<li>编写SQL语句（注解&#x2F;XML）</li>
+</ol>
+<h5 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h5><p>JDBC：（Java Database Connectivity），就是使用Java语言操作关系模型数据库的一套API。</p>
+<p>本质：</p>
+<ul>
+<li>sun公司官方定义的一套操作所有关系型数据库的规范，即接口。</li>
+<li>各个数据库厂商去实现这套接口，提供数据库<mark>驱动jar包</mark>。</li>
+<li>我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testJdbc</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">//1.注册驱动</span></span><br><span class="line">        Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.获取连接对象</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;jdbc:mysql://localhost:3306/mybaits&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> <span class="string">&quot;root&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">password</span> <span class="operator">=</span> <span class="string">&quot;123456&quot;</span>;</span><br><span class="line">        <span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> DriverManager.getConnection(url,username,password);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.获取执行SQL的对象Statement，执行SQL语句，返回结果</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;select * from user&quot;</span>;</span><br><span class="line">        <span class="type">Statement</span> <span class="variable">statement</span> <span class="operator">=</span> connection.createStatement();</span><br><span class="line">        <span class="type">ResultSet</span> <span class="variable">resultSet</span> <span class="operator">=</span> statement.executeQuery(sql);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4.封装结果数据</span></span><br><span class="line">        List&lt;User&gt; userList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(resultSet.next())&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">id</span> <span class="operator">=</span> resultSet.getInt(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> resultSet.getNString(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">            <span class="type">Short</span> <span class="variable">age</span> <span class="operator">=</span> resultSet.getShort(<span class="string">&quot;age&quot;</span>);</span><br><span class="line">            <span class="type">Short</span> <span class="variable">gender</span> <span class="operator">=</span> resultSet.getShort(<span class="string">&quot;gender&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">phone</span> <span class="operator">=</span> resultSet.getString(<span class="string">&quot;phone&quot;</span>);</span><br><span class="line">            <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(id,name,age,gender,phone);</span><br><span class="line">            userList.add(user);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//5.释放资源</span></span><br><span class="line">        statement.close();</span><br><span class="line">        connection.close();</span><br><span class="line">        userList.forEach(user-&gt;&#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h5><p>数据库连接池，是个容器，负责分配、管理数据库连接（Connection），它允许应用程序重复使用一个现有的数据库连接，而不是重新再建立一个，释放空闲时间超过最大空闲时间的连接，来避免因为没有释放连接而引起的数据库连接泄漏</p>
+<p>优势</p>
+<ul>
+<li>资源重用</li>
+<li>提升系统响应速度</li>
+<li>避免数据库连接泄漏</li>
+</ul>
+<p>标准接口：DataSource</p>
+<ul>
+<li>官方（sun）提供的数据库连接池接口，由第三方组织实现此接口。</li>
+<li>功能：获取连接     <code>connection getConnection() throws SQLException;</code></li>
+</ul>
+<p>常见产品：C3P0、DBCP、Druid、Hikari（springboot默认）</p>
+<p>Druid(德鲁伊)</p>
+<ul>
+<li>Druid连接池是阿里巴巴开源的数据库连接池项目</li>
+<li>功能强大、性能优秀、是Java语言最好的数据库连接池之一</li>
+</ul>
+<p>切换Druid数据库连接池</p>
+<blockquote>
+<p>官方地址：<a target="_blank" rel="noopener" href="https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter">https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter</a></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 添加到pom.xml文件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactld</span>&gt;</span>druid-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactld</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependcy</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#添加到application.properties文件中</span></span><br><span class="line"><span class="attr">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line"><span class="attr">spring.datasource.url</span>=<span class="string">jdbc:mysql//localhost:3306/mybatis</span></span><br><span class="line"><span class="attr">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.datasource.password</span>=<span class="string">123456</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h5><p>Lombok是一个实用的Java类库，能通过注解的形式自动生成构造器、getter &#x2F; setter、equals、hashcode、toString等方法，并可以自动化成日志变量，简化Java开发、提高效率。</p>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Getter &#x2F; @Setter</td>
+<td>为所有属性提供get&#x2F;set方法</td>
+</tr>
+<tr>
+<td>@ToString</td>
+<td>会给类自动生成易阅读的toString方法</td>
+</tr>
+<tr>
+<td>@EqualsAndHashCode</td>
+<td>根据类所拥有的非静态字段自动重写equals方法和hashCode方法</td>
+</tr>
+<tr>
+<td><strong>@Data</strong></td>
+<td>提供了更综合的生成代码的功（@Getter+@Setter+@ToString+@EqualsAndHashCode）</td>
+</tr>
+<tr>
+<td><strong>@NoArgsConstructor</strong></td>
+<td>为实体类生成无参的构造器方法</td>
+</tr>
+<tr>
+<td><strong>@AllArgsConstructor</strong></td>
+<td>为实体类生成除了static修饰的字段之外带有各参数的构造器方法。</td>
+</tr>
+</tbody></table>
+<p>使用lombokl需要引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">grouId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">grouId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactld</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactld</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><mark>注意事项：Lombok会在编译时，自动生成对应的java代码，我们使用lombok时，还需要安装一个lombok的插件（idea自带）</mark></p>
+<h4 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h4><p>案例：根据提供的《tlias智能学习辅助系统》页面原型及需求，完成员工管理的需求开发。</p>
+<p>功能列表：</p>
+<ul>
+<li>查询（根据主键ID查询、条件查询）</li>
+<li>新增</li>
+<li>更新</li>
+<li>删除（根据主键ID删除，根据主键ID批量删除）</li>
+</ul>
+<p>准备工作</p>
+<ul>
+<li>准备数据库表emp</li>
+<li>创建一个新的springboot工程，选择引入对应的起步依赖（mybatis、mysql驱动、lombok）</li>
+<li>application.properties中引入数据库连接信息</li>
+<li>创建对应的实体类Emp（实体类属性采用驼峰命名）</li>
+<li>准备Mapper接口EmpMapper</li>
+</ul>
+<h5 id="根据主键删除ID"><a href="#根据主键删除ID" class="headerlink" title="根据主键删除ID"></a><strong>根据主键删除ID</strong></h5><p>SQL语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> emp <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">17</span>;</span><br></pre></td></tr></table></figure>
+
+<p>接口方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Delete(&quot;delete from emp where id = #&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">delete</span><span class="params">(Integer id)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><mark>注意事项：如果mapper接口方法形参只有一个普通类型的参数，#{…}里面的属性名可以随便写，如：#{id}、#{value}</mark></p>
+<p>日志删除</p>
+<p>可以在application.properties中，打开mybatis日志，并指定输出到控制台</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#指定mybatis输出日志的位置，输出控制台</span></span><br><span class="line"><span class="attr">mybatis.configuration.log-impl</span>=<span class="string">org.apache.ibatis.logging.stdout.stdOutImpl</span></span><br></pre></td></tr></table></figure>
+
+<p>预编译SQL</p>
+<p><img src="/Javaweb/image-20240326205112100.png" alt="image-20240326205112100"></p>
+<p>预编译SQL优势：</p>
+<ul>
+<li>性能更高</li>
+<li>更安全（防止SQL注入）</li>
+</ul>
+<p><strong>SQL注入</strong>是指通过操作输入的数据来修改事先定义好的SQL语句，以达到执行代码对服务器进行<mark>攻击</mark>的方法。</p>
+<blockquote>
+<p>由于没有对用户输入进行充分检查，而SQL又是拼接而成，在用户输入参数时，在参数中添加一些SQL关键字，达到改变SQL运行结果的目的，也可以完成恶意攻击。</p>
+</blockquote>
+<p><strong>占位参数符</strong></p>
+<p>#{…}：执行SQL时，会将#{…}替换为？，生成预编译SQL，会自动设置参数值。使用时机：参数传递，都使用#{…}</p>
+<p>${…}：直接将参数拼接在SQL语句中，存在SQL注入问题。使用时机：如果对表名、列表进行动态设置时使用。</p>
+<h5 id="新增员工"><a href="#新增员工" class="headerlink" title="新增员工"></a>新增员工</h5><ul>
+<li>SQL语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp (username, name, gender, image, job, entrydate, dept_id, create_time, update_time)</span><br><span class="line">            <span class="keyword">values</span> (<span class="string">&#x27;Tom&#x27;</span>,<span class="string">&#x27;汤姆&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;1.ipg&#x27;</span>,<span class="number">1</span>,<span class="string">&#x27;2005-01-01&#x27;</span>,<span class="number">1</span>,now(),now());</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>接口方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Insert(&quot;insert into emp (username, name, gender, image, job, entrydate, dept_id, create_time, update_time)\n&quot; +</span></span><br><span class="line"><span class="meta">            &quot;values (#&#123;username&#125;,#&#123;name&#125;,#&#123;gender&#125;,#&#123;image&#125;,#&#123;job&#125;,#&#123;entryDate&#125;,#&#123;deptId&#125;,#&#123;createTime&#125;,#&#123;updateTime&#125;)&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title function_">insert</span><span class="params">(Emp emp)</span>;</span><br><span class="line"><span class="comment">//由于需要传入的数据比较多，因此我们采用传入一个实体对象的方式来实现</span></span><br></pre></td></tr></table></figure>
+
+<p>新增（主键返回）</p>
+<p>描述：在数据添加成功后，需要获取插入数据库数据的主键，如添加套餐数据时，还需要维护套餐菜品关系表数据。</p>
+<ul>
+<li>实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Options(keyProperty=&quot;id&quot;,useGeneratedKeys=true)</span></span><br><span class="line"><span class="meta">@Insert(&quot;insert into emp (username, name, gender, image, job, entrydate, dept_id, create_time, update_time)\n&quot; +</span></span><br><span class="line"><span class="meta">            &quot;values (#&#123;username&#125;,#&#123;name&#125;,#&#123;gender&#125;,#&#123;image&#125;,#&#123;job&#125;,#&#123;entryDate&#125;,#&#123;deptId&#125;,#&#123;createTime&#125;,#&#123;updateTime&#125;)&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title function_">insert</span><span class="params">(Emp emp)</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><ul>
+<li>SQL语句（根据ID更新员工信息）</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> emp <span class="keyword">set</span> username<span class="operator">=</span><span class="string">&#x27;songdaxia&#x27;</span>,name<span class="operator">=</span><span class="string">&#x27;宋大侠&#x27;</span>,gender<span class="operator">=</span><span class="string">&#x27;1&#x27;</span>,image<span class="operator">=</span><span class="string">&#x27;1.jpg&#x27;</span>,job<span class="operator">=</span><span class="string">&#x27;2&#x27;</span>,</span><br><span class="line">         entrydate<span class="operator">=</span><span class="string">&#x27;2020-01-01&#x27;</span>,dept_id<span class="operator">=</span><span class="string">&#x27;2&#x27;</span>,update_time<span class="operator">=</span><span class="string">&#x27;2022-01-01 22:43:21&#x27;</span> <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>接口方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Update(&quot;update emp set username=#&#123;username&#125;,name=#&#123;name&#125;,gender=#&#123;gender&#125;,image=#&#123;image&#125;,job=#&#123;job&#125;,&quot; + &quot;entrydate=#&#123;entryDate&#125;,dept_id=#&#123;deptId&#125;,update_time=#&#123;updateTime&#125; where id = #&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(Emp emp)</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="查询（根据ID查询）"><a href="#查询（根据ID查询）" class="headerlink" title="查询（根据ID查询）"></a>查询（根据ID查询）</h5><ul>
+<li>SQL语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">19</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>接口方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select(&quot;select * from emp where id = #&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Emp <span class="title function_">getById</span><span class="params">(Integer id)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>数据封装</strong></p>
+<ul>
+<li>实体类属性名和数据表查询返回的字段名一致时，mybatis会自动封装。</li>
+<li>如果实体类属性名和数据表查询返回的字段名不一致时，不能自动封装。</li>
+</ul>
+<p>解决方案：</p>
+<ol>
+<li>起别名：在SQL语句中，对不一样的列名起别名，别名和实体类属性名一样</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方案一：给字段起别名，让别名与实体类属性一致</span></span><br><span class="line"><span class="meta">@Select(&quot;select id,username,password,name,gender,image,job,&quot; +</span></span><br><span class="line"><span class="meta">         &quot;entrydate entryDate,dept_id deptId,create_time createTime,update_time updateTime &quot; +</span></span><br><span class="line"><span class="meta">         &quot;from emp where id = #&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Emp <span class="title function_">getById</span><span class="params">(Integer id)</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>手动结果映射：通过@Results及@Result进行手动结果映射</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方案二：通过@Results，@Result注解手动映射封装</span></span><br><span class="line"><span class="meta">@Results(&#123;</span></span><br><span class="line"><span class="meta">           @Result(column = &quot;dept_id&quot;, property = &quot;deptId&quot;),</span></span><br><span class="line"><span class="meta">           @Result(column = &quot;create_time&quot;, property = &quot;createTime&quot;),</span></span><br><span class="line"><span class="meta">           @Result(column = &quot;update_time&quot;, property = &quot;updateTime&quot;),</span></span><br><span class="line"><span class="meta">           @Result(column = &quot;entrydate&quot;, property = &quot;entryDate&quot;)</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br><span class="line"><span class="meta">@Select(&quot;select * from emp where id = #&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Emp <span class="title function_">getById</span><span class="params">(Integer id)</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>开启驼峰命名：如果字段名与属性名符合驼峰命名规则，mybatis会自动通过驼峰命名规则映射</li>
+</ol>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方案三：开启mybatis的驼峰命名自动映射开关  ---- a_cloumn    ---------&gt;  aColumn</span></span><br><span class="line"><span class="attr">mybatis.configuration.map-underscore-to-camel-case</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="查询（条件查询）"><a href="#查询（条件查询）" class="headerlink" title="查询（条件查询）"></a>查询（条件查询）</h5><ul>
+<li>SQL语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> name <span class="keyword">like</span> <span class="string">&#x27;%张%&#x27;</span> <span class="keyword">and</span> gender <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> entrydate <span class="keyword">between</span> <span class="string">&#x27;2010-01-01&#x27;</span> <span class="keyword">and</span> <span class="string">&#x27;2020-01-01&#x27;</span> <span class="keyword">order</span> <span class="keyword">by</span></span><br><span class="line">update_time <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>接口方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Select(&quot;select * from emp where name like &#x27;%$&#123;name&#125;%&#x27; and gender = #&#123;gender&#125; and entrydate between #&#123;begin&#125; and #&#123;end&#125; order by\n&quot; +</span></span><br><span class="line"><span class="meta">            &quot;update_time desc&quot;)</span></span><br><span class="line"><span class="keyword">public</span> List&lt;Emp&gt; <span class="title function_">list</span><span class="params">(String name, Short gender, LocalDate begin,LocalDate end)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>使用$会存在<mark>性能低、不安全、存在SQL注入问题</mark>，可以通过字符串拼接函数<code>concat</code>来解决这个为题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select(&quot;select * from emp where name like concat(&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;) and gender = #&#123;gender&#125; and entrydate between #&#123;begin&#125; and #&#123;end&#125; order by\n&quot; +</span></span><br><span class="line"><span class="meta">            &quot;update_time desc&quot;)</span></span><br><span class="line"><span class="keyword">public</span> List&lt;Emp&gt; <span class="title function_">list</span><span class="params">(String name, Short gender, LocalDate begin,LocalDate end)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数名说明</strong></p>
+<ul>
+<li>在springboot的2.x版本</li>
+</ul>
+<p><img src="/Javaweb/image-20240328204410024.png" alt="image-20240328204410024"></p>
+<ul>
+<li>在springboot的1.x版本  &#x2F;  单独使用mybatis</li>
+</ul>
+<p><img src="/Javaweb/image-20240328204423023.png" alt="image-20240328204423023"></p>
+<h4 id="XML映射文件"><a href="#XML映射文件" class="headerlink" title="XML映射文件"></a>XML映射文件</h4><p><strong>规范</strong></p>
+<ul>
+<li>XML映射文件的名称与Mapper接口名称一致，并且将XML映射文件和Mapper接口放置到相同包下<strong>（同名同包）</strong></li>
+<li>XML映射文件的namespace属性为Mapper接口全限定名一致</li>
+<li>XML映射文件中SQL语句的id与Mapper接口中的方法名一致，并保持返回类型一致</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Mapper接口</span></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">EmpMapper</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Emp&gt; <span class="title function_">list</span><span class="params">(String name,<span class="type">short</span> gender,LocalDate begin,LocalDate end)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- XML映射文件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.ithema.mapper.EmpMapper&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.ithema.pojo.Emp&quot;</span>&gt;</span></span><br><span class="line">        select * from emp where name like concat(&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;) and gender=#&#123;gender&#125;</span><br><span class="line">        and entrydate between #&#123;begin&#125; and #&#123;end&#125; order by update_time desc</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>MybatisX</strong></p>
+<p><strong>MybatisX</strong>是一款基于IDEA的快速开发Mybatis的插件，为效率而生。</p>
+<p>使用Mybatis的注解，主要是来完成一些简单的增删改查功能。如果需要实现复杂的SQL功能，建议使用XML来配置映射语句。</p>
+<p>官方说明：<a target="_blank" rel="noopener" href="https://mybatis.net.cn/getting-started.html">https://mybatis.net.cn/getting-started.html</a></p>
+<h4 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h4><p>随着用户的输入或外部条件的变化而变化的SQL语句，我们称为<mark>动态SQL</mark>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.ithema.pojo.Emp&quot;</span>&gt;</span></span><br><span class="line">      select id,username,password,name,gender,image,job,entrydate,</span><br><span class="line">    		 dept_id,create_time,update_time from emp</span><br><span class="line">      where</span><br><span class="line">    	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;name != null&quot;</span>&gt;</span></span><br><span class="line">    		name like concat(&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)</span><br><span class="line">    	<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;gender != null&quot;</span>&gt;</span></span><br><span class="line">           and gender = #&#123;gender&#125;</span><br><span class="line">    	<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;begin != null and end != null&quot;</span>&gt;</span></span><br><span class="line">           and entrydate between #&#123;begin&#125; and #&#123;end&#125;</span><br><span class="line">    	<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    order by update_time desc</span><br><span class="line">   <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<if>
+
+<ul>
+<li><if>：用于判断条件是否成立。使用test属性进行条件判断，如果条件为true，则拼接SQL。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot; name != null&quot;</span>&gt;</span></span><br><span class="line">	name like concat(&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.ithema.pojo.Emp&quot;</span>&gt;</span></span><br><span class="line">       select id,username,password,name,gender,image,job,entrydate,</span><br><span class="line">     		 dept_id,create_time,update_time from emp</span><br><span class="line">       where</span><br><span class="line">     	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;name != null&quot;</span>&gt;</span></span><br><span class="line">     		name like concat(&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)</span><br><span class="line">     	<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">     	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;gender != null&quot;</span>&gt;</span></span><br><span class="line">            and gender = #&#123;gender&#125;</span><br><span class="line">     	<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">     	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;begin != null and end != null&quot;</span>&gt;</span></span><br><span class="line">            and entrydate between #&#123;begin&#125; and #&#123;end&#125;</span><br><span class="line">     	<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">     order by update_time desc</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>引入<where>标签</p>
+<p><where>：where元素只会在子元素有内容的情况下才插入where语子句。而且会自动去除子句的开头的AND或OR。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.ithema.pojo.Emp&quot;</span>&gt;</span></span><br><span class="line">       select id,username,password,name,gender,image,job,entrydate,</span><br><span class="line">     		 dept_id,create_time,update_time from emp</span><br><span class="line">       <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">     	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;name != null&quot;</span>&gt;</span></span><br><span class="line">     		name like concat(&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)</span><br><span class="line">     	<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">     	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;gender != null&quot;</span>&gt;</span></span><br><span class="line">            and gender = #&#123;gender&#125;</span><br><span class="line">     	<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">     	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;begin != null and end != null&quot;</span>&gt;</span></span><br><span class="line">            and entrydate between #&#123;begin&#125; and #&#123;end&#125;</span><br><span class="line">     	<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">     order by update_time desc</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>动态更新修改员工信息</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;update2&quot;</span> &gt;</span></span><br><span class="line"># 动态更新员工信息</span><br><span class="line">        update emp</span><br><span class="line">         set</span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;username != null&quot;</span>&gt;</span></span><br><span class="line">                username=#&#123;username&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;name != null&quot;</span>&gt;</span></span><br><span class="line">                name=#&#123;name&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;gender != null&quot;</span>&gt;</span></span><br><span class="line">                gender=#&#123;gender&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;job != null&quot;</span>&gt;</span></span><br><span class="line">                job=#&#123;job&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;entryDate != null&quot;</span>&gt;</span></span><br><span class="line">                entrydate=#&#123;entryDate&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;deptId != null&quot;</span>&gt;</span></span><br><span class="line">                dept_id=#&#123;deptId&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;updateTime != null&quot;</span>&gt;</span></span><br><span class="line">                update_time=#&#123;updateTime&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        where id = #&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><set>：动态地在首行插入SET关键字，并会删除额外地逗号。（用在update语句中）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;update2&quot;</span> &gt;</span></span><br><span class="line"># 动态更新员工信息</span><br><span class="line">        update emp</span><br><span class="line">         <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;username != null&quot;</span>&gt;</span></span><br><span class="line">                username=#&#123;username&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;name != null&quot;</span>&gt;</span></span><br><span class="line">                name=#&#123;name&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;gender != null&quot;</span>&gt;</span></span><br><span class="line">                gender=#&#123;gender&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;job != null&quot;</span>&gt;</span></span><br><span class="line">                job=#&#123;job&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;entryDate != null&quot;</span>&gt;</span></span><br><span class="line">                entrydate=#&#123;entryDate&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;deptId != null&quot;</span>&gt;</span></span><br><span class="line">                dept_id=#&#123;deptId&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;updateTime != null&quot;</span>&gt;</span></span><br><span class="line">                update_time=#&#123;updateTime&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">        where id = #&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<foreach>
+
+<ul>
+<li>SQL语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> emp <span class="keyword">where</span> id <span class="keyword">in</span>(<span class="number">18</span>,<span class="number">21</span>,<span class="number">24</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>接口方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteByIds</span><span class="params">(List&lt;Integer&gt; ids)</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>XML映射文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;deleteByIds&quot;</span>&gt;</span></span><br><span class="line">	delete from where id in</span><br><span class="line">    <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;ids&quot;</span> <span class="attr">item</span>=<span class="string">&quot;id&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;,&quot;</span> <span class="attr">open</span>=<span class="string">&quot;(&quot;</span>,<span class="attr">close</span>=<span class="string">&quot;)&quot;</span>&gt;</span></span><br><span class="line">    	#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>属性</p>
+<ul>
+<li>collection：集合名称</li>
+<li>item：集合遍历出来的元素 &#x2F; 项</li>
+<li>separator：每一次遍历使用的分割符</li>
+<li>open：遍历开始前拼接的片段</li>
+<li>close：遍历结束后拼接的片段</li>
+</ul>
+<p><strong>sql片段</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">&quot;commonSelect&quot;</span>&gt;</span></span><br><span class="line">	select id,username,name,gender,image,job,entrydate,dept_id,</span><br><span class="line">    create_time,update_time from emp</span><br><span class="line"><span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.ithema.pojo.Emp&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">&quot;commonSelect&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;name != null&quot;</span>&gt;</span></span><br><span class="line">            name like concat(&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;gender != null&quot;</span>&gt;</span></span><br><span class="line">            and gender = #&#123;gender&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;begin != null and end != null&quot;</span>&gt;</span></span><br><span class="line">            and entrydate between #&#123;begin&#125; and #&#123;end&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">        order by update_time desc</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">selecct</span> <span class="attr">id</span>=<span class="string">&quot;getByIds&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.ithema.pojo.Emp&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">&quot;commonSelect&quot;</span>/&gt;</span></span><br><span class="line">        where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">selecct</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><sql>：定义可重用的SQL片段</li>
+<li><include>：通过属性refid，指定包含的sql片段</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -841,7 +2019,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">74.8k</span>
+                        class="white-color">88.1k</span>
             
             
             

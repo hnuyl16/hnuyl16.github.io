@@ -399,21 +399,21 @@ SQL：操作关系型数据库的">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-03-15
+                    2024-04-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    19.6k
+                    20.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    73 分
+                    76 分
                 </div>
                 
 
@@ -2473,7 +2473,101 @@ SQL：操作关系型数据库的">
 <li>当前读</li>
 </ul>
 <p>读取的是记录的最新版本，读取时还要保证其他并发事务不能修改当前记录，会对读取的记录进行加锁，对于我们日常的操作，如：select … lock in share mode （共享锁），select … for update、update、insert、delete（排他锁）都是一种当前读。</p>
-<p>​	</p>
+<ul>
+<li>快照读</li>
+</ul>
+<p>简单的select（不加锁）就是快照读，快照读，读取的是记录数据的可见版本，有可能是历史数据，不加锁，是非阻塞读</p>
+<ul>
+<li>Read Committed：每次select，都生成一个快照读</li>
+<li>Repeatable Read：开始事务后第一个select语句才是快照读的地方</li>
+<li>Serializable：快照读会退化为当前读</li>
+</ul>
+<p><strong>MVCC</strong>，全称<code>Multi-Version Concurrency Control</code>，多版本并发控制。指维护一个数据的多个版本，使得读写操作没有冲突，快照读为MySQL实现MVCC提供了一个非阻塞功能。MVCC的具体实现，还需要依赖于数据库记录中的三个隐式字段、undo log日志、<code>readView</code>。 </p>
+<h5 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h5><ul>
+<li>记录当中的隐藏字段</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>隐藏字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DB_TRX_ID</td>
+<td>最近修改事务ID，记录插入这条记录或最后一次修改该记录的事务ID</td>
+</tr>
+<tr>
+<td>DB_ROLL_PTR</td>
+<td>回滚指针，指向这条记录的上一个版本，用于配合<code>undo log</code>，指向上一个版本</td>
+</tr>
+<tr>
+<td>DB_ROW_ID</td>
+<td>隐藏主键，如果表结构没有指定主键，将会生成该隐藏字段</td>
+</tr>
+</tbody></table>
+<p><code>idb2sdi 表空间文件名</code>：查看表空间文件内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ibd2sdi 表名.ibd</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>undo log</li>
+</ul>
+<p>回滚日志，在insert、update、delete的时候产生的便于数据回滚的日志，当insert的时候，产生的undo log日志只在回滚时需要，在事务提交后，可被立即删除，而update、delete的时候，产生的undo log日志不仅在回滚时需要，在快照读时也需要，不会被立即删除</p>
+<ul>
+<li>undo log版本链</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/hnuyl16/images/image-20240415222158144.png" alt="image-20240415222158144"></p>
+<p>不同事务或相同事务对同一条记录进行修改，会导致该记录的undolog生成一条记录版本链表，链表的头部是最新的旧记录，链表尾部是最早的旧记录。</p>
+<ul>
+<li>readview</li>
+</ul>
+<p>ReadView（读视图）是<strong>快照读</strong>SQL执行时MVCC提取数据的依据，记录并维护当前活跃的事务（未提交的）id。</p>
+<p>ReadView包含了四个核心字段：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>m_ids</td>
+<td>当前活跃的事务id集合</td>
+</tr>
+<tr>
+<td>min_trx_id</td>
+<td>最小活跃事务id</td>
+</tr>
+<tr>
+<td>max_trx_id</td>
+<td>预分配事务id，当前最大事务id1（因为事务id是自增的）</td>
+</tr>
+<tr>
+<td>creator_trx_id</td>
+<td>ReadView创建者的事务id</td>
+</tr>
+</tbody></table>
+<p><mark>版本链数据访问规则</mark></p>
+<p>trx_id：代表的是当前事务ID。</p>
+<ol>
+<li><p>trx_id &#x3D;&#x3D; creator_trx_id 	可以访问当前版本	→	说明数据是当前这个事务更改的</p>
+</li>
+<li><p>trx_id &lt; min_trx_id	可以访问当前版本	→	说明数据已经提交了</p>
+</li>
+<li><p>trx_id &gt; max_trx_id   不可以访问该版本    →    说明当前事务是在ReadView生成之后才开始</p>
+</li>
+<li><p>min_trx_id &lt;&#x3D; trx_id &lt;&#x3D; max_trx_id  如果trx_id不在m_ids中是可以访问该版本的   →   说明数据已经提交了</p>
+</li>
+</ol>
+<p>不同的隔离级别，生成ReadView的时机不同：</p>
+<ul>
+<li>READ COMMITTED：在事务中每一次执行快照读时生成ReadView</li>
+<li>REPEATABLE READ：仅在事务中第一次执行快照读时生成ReadView，后续复用该ReadView</li>
+</ul>
+<p><mark>RC隔离级别下，在事务中的每一次执行快照读时生成ReadView</mark></p>
+<p><img src="https://cdn.jsdelivr.net/gh/hnuyl16/images/image-20240416204531685.png" alt="image-20240416204531685"></p>
+<p><mark>RR隔离级别下，仅在事务中第一次执行快照读时生成ReadView，后续复用该ReadView</mark></p>
+<p><img src="https://cdn.jsdelivr.net/gh/hnuyl16/images/image-20240416204519133.png" alt="image-20240416204519133"></p>
 
                 
             </div>
@@ -2904,7 +2998,7 @@ SQL：操作关系型数据库的">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">74.8k</span>
+                        class="white-color">88.1k</span>
             
             
             
